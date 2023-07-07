@@ -1,12 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import App from './App';
+import './samples/node-api';
+dayjs.locale('zh-cn');
+dayjs.extend(relativeTime);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
-
-postMessage({ payload: 'removeLoading' }, '*')
+createRoot(document.getElementById('root') as HTMLElement).render(<App />);

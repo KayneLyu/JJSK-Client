@@ -1,22 +1,19 @@
-/// <reference types="vite-plugin-electron/electron-env" />
+/// <reference types="vite-electron-plugin/electron-env" />
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    /**
-     * The built directory structure
-     *
-     * ```tree
-     * ├─┬─┬ dist
-     * │ │ └── index.html
-     * │ │
-     * │ ├─┬ dist-electron
-     * │ │ ├── main.js
-     * │ │ └── preload.js
-     * │
-     * ```
-     */
-    DIST: string
+    VSCODE_DEBUG?: 'true';
+    DIST_ELECTRON: string;
+    DIST: string;
     /** /dist/ or /public/ */
-    PUBLIC: string
+    PUBLIC: string;
+    SQUIRREL_URL: string;
   }
+}
+
+interface WorkerMessage<O, R> {
+  Method: string;
+  Options?: O;
+  Result?: R;
+  Error?: string;
 }
